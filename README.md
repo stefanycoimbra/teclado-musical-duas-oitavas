@@ -635,7 +635,7 @@ Isolando TIM3->PSC, temos:
 
 $$ 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = {𝑓𝑐𝑙𝑜𝑐k \over {𝑓𝑜𝑛𝑑𝑎 * (𝑇𝐼𝑀3−>𝐴𝑅𝑅 + 1)}} - 1 $$
 
-$$ 𝑇𝐼𝑀3 −> 𝑃SC = {72000000Hz \over {𝑓𝑜𝑛𝑑𝑎 x 46}} - 1 $$
+$$ 𝑇𝐼𝑀3 −> 𝑃SC = {72000000Hz \over {𝑓𝑜𝑛𝑑𝑎 * 46}} - 1 $$
 
 Como a frequência da nota muda (fonda), há um valor de prescale associado a cada uma dessas frequências, cálculo este realizado dentro da função do buzzer, que pode ser conferida anteriormente. Para cada frequência, já considerando o resultado sem casas decimais:
 
