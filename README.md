@@ -142,10 +142,14 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
       <td>
         void cycle_25(void)
       </td>
+      <td>
+      </td>
   </tr>
   <tr>
       <td>
         void cycle_75(void)
+      </td>
+      <td>
       </td>
   </tr>
  </tbody>
