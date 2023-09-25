@@ -612,8 +612,97 @@ int main(){
 }
 ```
 
-## Cálculos do Projeto
+## <img src="https://img.icons8.com/nolan/30/math.png"/> Cálculos do Projeto
+Para a garantia de funcionamento do nosso código, precisamos realizar alguns cálculos. Para isso, o valor do registrador associado duty cycle e frequência da onda da nota devem ser parâmetros calculados a fim de se obter valores ótimos e corretos para o funcionamento de nossa solução. Dessa forma, é preciso que o registro do timer relacionado ao delay do sinal de PWM enviado e de PSC, ligado ao prescaler setado do timer sejam configurados com esses valores calculados. Através de várias simulações feitas pelo grupo, encontramos como um valor de contagem máximo (ARR) 45, de maneira que fossem claras as comparações entre os ciclos e oitavas, além do comportamento de bending. Assim, para o valor do registrador associado ao duty cycle, considerando o timer 3 usado, temos:
 
-## Demonstração
+$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 = 𝑑𝑢𝑡𝑦 𝑐𝑦𝑐𝑙𝑒 𝑥 (𝐴𝑅𝑅 + 1)$
 
-## Conclusão
+$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 = 𝑑𝑢𝑡𝑦 𝑐𝑦𝑐𝑙𝑒 𝑥 (46)$
+
+Para cada duty cycle:
+
+$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (25%) = 0, 25 𝑥 (46) = 11, 5 −> 𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (25%) = 12$
+
+$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (50%) = 0, 50 𝑥 (46) = 23$
+
+$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (75%) = 0, 75 𝑥 (46) = 34, 5 −> 𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (25%) = 34$
+
+Para o valor do registrador correspondente ao prescaler, utilizamos a seguinte equação, sabendo que a frequência de clock fclk é igual a 72MHz:
+
+$$ 𝑓𝑜𝑛𝑑𝑎 = 𝑓𝑐𝑙𝑜𝑐k \over {(𝑇𝐼𝑀3−>𝑃𝑆𝐶+1) 𝑥 (𝑇𝐼𝑀3−>𝐴𝑅𝑅+1)} $$
+
+Isolando TIM3->PSC, temos:
+
+$$ 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = {𝑓𝑐𝑙𝑜𝑐k \over {𝑓𝑜𝑛𝑑𝑎 𝑥 (𝑇𝐼𝑀3−>𝐴𝑅𝑅+1)}} - 1 $$
+
+$$ 𝑇𝐼𝑀3 −> 𝑃SC = {72000000Hz \over {𝑓𝑜𝑛𝑑𝑎 𝑥 46}} - 1 $$
+
+Como a frequência da nota muda (fonda), há um valor de prescale associado a cada uma dessas frequências, cálculo este realizado dentro da função do buzzer, que pode ser conferida anteriormente. Para cada frequência, já considerando o resultado sem casas decimais:
+
+###Oitava 1:
+- C (fonda = 132Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 11857
+- C# (fonda = 140Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 11179
+- D (fonda = 148Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 10575
+- D# (fonda = 157Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 9968
+- E (fonda = 166Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 9428
+- F (fonda = 176Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 8892
+- F# (fonda = 187Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 8369
+- G (fonda = 198Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 7904
+- G# (fonda = 209Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 7488
+- A (fonda = 222Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 7050
+- A# (fonda = 235Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 6659
+- B (fonda = 249Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 6285
+- C (fonda = 264Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 5928
+
+###Oitava 2:
+- C (fonda = 264Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 5928
+- C# (fonda = 280Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 5589
+- D (fonda = 296Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 5287
+- D# (fonda = 314Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 4984
+- E (fonda = 332Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 4714
+- F (fonda = 352Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 4446
+- F# (fonda = 374Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 4184
+- G (fonda = 396z): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 3952
+- G# (fonda = 418Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 3744
+- A (fonda = 444Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 3524
+- A# (fonda = 470Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 3329
+- B (fonda = 498Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 3142
+- C (fonda = 528Hz): 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = 2963
+
+## <img src="ttps://img.icons8.com/external-phatplus-lineal-color-phatplus/30/external-testing-cloud-computing-phatplus-lineal-color-phatplus.png"/> Demonstração
+
+Para verificar o funcionamento do código, foram feitos testes na placa Redpill conectada à placa Bluepill. Também foi utilizado um potenciômetro como um efeito de bending, que aumenta a frequência da nota, um buzzer para emitir o som e o LCD para mostrar qual oitava está selecionada e o valor do ciclo de trabalho atual (Duty Cycle). A pinagem utilizada ficou da seguinte forma:
+
+| Tecla | Função |
+| --- | --- |
+| SW1 | Seleciona 1ª oitava |
+| SW2 | Seleciona 2ª oitava |
+| SW3 | Seleciona Duty Cycle |
+| POT | Bending |
+
+| Tecla | Nota Musical |
+| --- | --- |
+| SW5 | C |
+| SW13 | C# |
+| SW6 | D |
+| SW14 | D# |
+| SW7 | E |
+| SW8 | F |
+| SW15 | F# |
+| SW9 | G |
+| SW16 | G# |
+| SW10 | A |
+| SW17 | A# |
+| SW11 | B |
+| SW12 | C |
+
+O primeiro exemplo foi a música “Cai cai balão" e foi utilizado o duty cycle de 25% com a 1ª oitava selecionada. Já o segundo exemplo é a música “Back In Black” da banda AC/DC e foi utilizado o duty cycle de 75%, foi mantido a 1ª oitava e alterado o timbre. 
+
+O Link do vídeo de demonstrações: https://youtu.be/gAyJ-6XzcmM
+
+## <img src="https://img.icons8.com/external-tal-revivo-fresh-tal-revivo/30/external-thinking-a-best-idea-to-be-executed-for-class-school-fresh-tal-revivo.png"/> Time
+
+`Danilo Bitencourt Medeiros do Nascimento`
+`Igor José Marinho Vieira`
+`Sabrina Danielly Lacerda`
+`Stéfany Coura Coimbra`
