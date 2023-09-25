@@ -25,8 +25,19 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
 
 | Parte | Função | Descrição |
 | --- | --- | --- |
-| `LCD` | ```void lcd_init(void)``` | Inicia o display |   
-| --- | --- | --- |
+| `LCD` | ```void lcd_init(void)``` | Inicia o display |
 |       | ```void lcd_command(unsigned char cmd)``` | Envia comandos ao display |
 |       | ```void lcd_data(unsigned char data)``` | Envia dados em ASCII para ser exibido no display |
+|       | ```void lcd_print(char *str)``` | Envia uma string ao display |
+|       | ```void lcd_putValue(unsigned char value)``` | Usado internamente para inserir valores no display |
 | `DELAY` | ```void delay_us(uint16_t t)``` | Delay em microssegundos |
+|         | ```void delay_ms(uint16_t t) ``` | Delay em milissegundos |
+| `Conversão` | ```void binary_to_bcd(uint8_t t)``` | Converte de binário para bcd |
+|             | ```void bcd_to_ascii(void)``` | Converte de bcd para ascii |
+| `Manipulação de bit` | ```char bitTst(char port, char bit)``` | Testa um bit de determinada PORT através da operação AND e deslocamento de bits |
+| `Controle de ciclos` | ```void cycle_50(void)``` | Essas funções atualizam o LCD de acordo com a informação da porcentagem do duty cicle da função void check_cycle e envia ao registrador TIM3 o delay correspondente ao ciclo (void)
+|                      | ```void cycle_25(void)``` |
+|                      | ```void cycle_75(void)``` | |
+| `Funções de checagem` | `````` |
+| `Buzzer` | `````` |
+| `Principal` | `````` |
