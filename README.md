@@ -134,7 +134,7 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
       <td> 
         void cycle_50(void)
       </td>
-      <td rowspan="1"> 
+      <td> 
         Essas funções atualizam o LCD de acordo com a informação da porcentagem do duty cicle da função void check_cycle e envia ao registrador TIM3 o delay correspondente ao ciclo (void)
       </td>
   </tr>
@@ -142,10 +142,68 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
       <td>
         void cycle_25(void)
       </td>
+      <td>
+      </td>
   </tr>
   <tr>
       <td>
         void cycle_75(void)
+      </td>
+      <td>
+      </td>
+  </tr>
+  <tr>
+      <td colspan="1" rowspan="4">Funções de checagem
+      </td>
+      <td>
+        void check_cycle(void)
+      </td>
+      <td>
+        Verifica a porcentagem que o duty cicle deverá operar para enviar o timbre ao buzzer
+      </td>
+  </tr>
+  <tr>
+      <td>
+        void check_octave(void)
+      </td>
+      <td>
+        Verifica, por meio da função char bitTst(char port, char bit), qual oitava foi selecionada no teclado
+      </td>
+  </tr>
+  <tr>
+      <td>
+        void check_pot(void)
+      </td>
+      <td>
+        Recebe, através da entrada ADC, o valor do potenciômetro, salvando-o na variável bending. Para uma maior precisão, a fim de obter uma suavidade no movimento, o valor é convertido em uma escala de log
+      </td>
+  </tr>
+  <tr>
+      <td>
+        void check_keyboard_key(void)
+      </td>
+      <td>
+        Verifica qual tecla foi pressionada usando a função char bitTst(char port, char bit). De acordo com a tecla pressionada e com a oitava selecionada, é tocado a notachamando a função void buzzer(uint16_t note)
+      </td>
+  </tr>
+  <tr>
+      <td>Buzzer
+      </td>
+      <td>
+        void buzzer(uint16_t note)
+      </td>
+      <td>
+        Além de configurar o TIMER 3 para ativar o buzzer, essa função realiza um cálculo para o prescaler, com base na frequência da nota recebida, setando-o no registrador do timer
+      </td>
+  </tr>
+  <tr>
+      <td>Principal
+      </td>
+      <td>
+        int main()
+      </td>
+      <td>
+        Função principal com todas as chamadas de funções secundárias e inicialização dos registradores utilizados
       </td>
   </tr>
  </tbody>
