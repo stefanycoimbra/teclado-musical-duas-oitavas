@@ -26,6 +26,7 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
 | Parte | Função | Descrição |
 | --- | --- | --- |
 | `LCD` | ```void lcd_init(void)``` | Inicia o display |   
+| --- | --- | --- |
 |       | ```void lcd_command(unsigned char cmd)``` | Envia comandos ao display |
 |       | ```void lcd_data(unsigned char data)``` | Envia dados em ASCII para ser exibido no display |
 | `DELAY` | ```void delay_us(uint16_t t)``` | Delay em microssegundos |
