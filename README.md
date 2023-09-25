@@ -43,7 +43,7 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
       <td colspan="1" rowspan="5">LCD
       </td>
       <td>
-        `void lcd_init(void)`
+        void lcd_init(void)
       </td>
       <td>
         Inicia o display
@@ -51,7 +51,7 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
     </tr>
     <tr>
       <td>
-          `void lcd_command(unsigned char cmd)`
+          void lcd_command(unsigned char cmd)
       </td>
       <td>
           Envia comandos ao display
@@ -59,7 +59,7 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
     </tr>
     <tr>
       <td>
-          `void lcd_data(unsigned char data)`
+          void lcd_data(unsigned char data)
       </td>
       <td>
           Envia dados em ASCII para ser exibido no display
@@ -67,7 +67,7 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
     </tr>
     <tr>
       <td>
-          `void lcd_print(char *str)`
+          void lcd_print(char *str)
       </td>
       <td>
           Envia uma string ao display
@@ -75,10 +75,78 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
     </tr>
     </tr>
       <td>
-          `void lcd_putValue(unsigned char value)`
+          void lcd_putValue(unsigned char value)
       </td>
       <td>
          Usado internamente para inserir valores no display
       </td>
     </tr>
     </tr>
+  <tr>
+      <td colspan="1" rowspan="2">DELAY
+      </td>
+      <td>
+        void delay_us(uint16_t t)
+      </td>
+      <td>
+        Delay em microssegundos
+      </td>
+  </tr>
+  <tr>
+      <td>
+        void delay_ms(uint16_t t)
+      </td>
+      <td>
+        Delay em milissegundos
+      </td>
+  </tr>
+  <tr>
+      <td colspan="1" rowspan="2">Conversão
+      </td>
+      <td>
+        void binary_to_bcd(uint8_t t)
+      </td>
+      <td>
+        Converte de binário para bcd
+      </td>
+  </tr>
+  <tr>
+      <td>
+        void bcd_to_ascii(void)
+      </td>
+      <td>
+        Converte de bcd para ascii
+      </td>
+  </tr>
+  <tr>
+      <td>Manipulação de bit
+      </td>
+      <td>
+        char bitTst(char port, char bit)
+      </td>
+      <td>
+        Testa um bit de determinada PORT através da operação AND e deslocamento de bits
+      </td>
+  </tr>
+  <tr>
+      <td colspan="1" rowspan="3">Controle de ciclos
+      </td>
+      <td> 
+        void cycle_50(void)
+      </td>
+      <td> 
+        Essas funções atualizam o LCD de acordo com a informação da porcentagem do duty cicle da função void check_cycle e envia ao registrador TIM3 o delay correspondente ao ciclo (void)
+      </td>
+  </tr>
+  <tr>
+      <td>
+        void cycle_25(void)
+      </td>
+  </tr>
+  <tr>
+      <td>
+        void cycle_75(void)
+      </td>
+  </tr>
+ </tbody>
+</table>
