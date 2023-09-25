@@ -13,9 +13,19 @@ Para a construção de nosso código, utilizamos os seguintes componentes refere
 
 Em relação à pinagem utilizada, consideremos a figura, retirada do apêndice dos laboratórios de ELTD13, ministrados pelo Prof. Gustavo Colletta:
 
-<img src="https://uploaddeimagens.com.br/images/004/617/794/full/teclado02.png?1695600597" width=30% height=30%>
+<img src="https://uploaddeimagens.com.br/images/004/617/794/full/teclado02.png?1695600597" width=38% height=38%>
 
 ● `SW1: PB12`, `SW2: PB13`, `SW3: PB14`, `POT: PB1`, `Buzzer: PB0`, `LCD4: PA8`, `LCD5: PA6`, `LCD6: PA5`, `LCD7: PA11`, `LCDEN: PA12`, `LCDRS: PA15`, `SW5: PB5`, `SW6: PB4`, `SW7: PB3`, `SW8: PA3`, `SW9: PA4`, `SW10: PB8`, `SW11: PB9`, `SW12: PB11`, `SW13: PB10`, `SW14: PA7`, `SW15: PC15`, `SW16: PC14`, `SW17: PC13`
 
 Para a checagem dos registradores e bits ao decorrer do projeto, foi utilizado o [manual de referência da ST](https://www.st.com/resource/en/reference_manual/cd00171190-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf).
 
+## <img src="https://img.icons8.com/color/30/code.png"/> O Código
+
+Para a construção do código, utilizamos o ambiente Keil uVision. A seguir será apresentada cada função utilizada e sua lógica detalhada a seguir.
+
+| Parte | Função | Descrição |
+| --- | --- | --- |
+| `LCD` | ```void lcd_init(void)``` | Inicia o display |   
+|       | ```void lcd_command(unsigned char cmd)``` | Envia comandos ao display |
+|       | ```void lcd_data(unsigned char data)``` | Envia dados em ASCII para ser exibido no display |
+| `DELAY` | ```void delay_us(uint16_t t)``` | Delay em microssegundos |
