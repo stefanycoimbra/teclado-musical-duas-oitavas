@@ -615,17 +615,17 @@ int main(){
 ## <img src="https://img.icons8.com/nolan/30/math.png"/> Cálculos do Projeto
 Para a garantia de funcionamento do nosso código, precisamos realizar alguns cálculos. Para isso, o valor do registrador associado duty cycle e frequência da onda da nota devem ser parâmetros calculados a fim de se obter valores ótimos e corretos para o funcionamento de nossa solução. Dessa forma, é preciso que o registro do timer relacionado ao delay do sinal de PWM enviado e de PSC, ligado ao prescaler setado do timer sejam configurados com esses valores calculados. Através de várias simulações feitas pelo grupo, encontramos como um valor de contagem máximo (ARR) 45, de maneira que fossem claras as comparações entre os ciclos e oitavas, além do comportamento de bending. Assim, para o valor do registrador associado ao duty cycle, considerando o timer 3 usado, temos:
 
-$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 = 𝑑𝑢𝑡𝑦_𝑐𝑦𝑐𝑙𝑒   *   (𝐴𝑅𝑅 + 1)$
+$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 = 𝑑𝑢𝑡𝑦\_𝑐𝑦𝑐𝑙𝑒   *   (𝐴𝑅𝑅 + 1)$
 
-$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 = 𝑑𝑢𝑡𝑦_𝑐𝑦𝑐𝑙𝑒   *   (46)$
+$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 = 𝑑𝑢𝑡𝑦\_𝑐𝑦𝑐𝑙𝑒   *   (46)$
 
 Para cada duty cycle:
 
-$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (25\%) = 0,25 * (46) = 11,5 −> 𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (25\%) = 12$
+$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (25\\%) = 0,25 * (46) = 11,5 −> 𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (25\\%) = 12$
 
-$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (50\%) = 0,50 * (46) = 23$
+$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (50\\%) = 0,50 * (46) = 23$
 
-$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (75\%) = 0,75 * (46) = 34,5 −> 𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (25\%) = 34$
+$𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (75\\%) = 0,75 * (46) = 34,5 −> 𝑇𝐼𝑀3 −> 𝐶𝐶𝑅3 (25\\%) = 34$
 
 Para o valor do registrador correspondente ao prescaler, utilizamos a seguinte equação, sabendo que a frequência de clock fclk é igual a 72MHz:
 
@@ -633,7 +633,7 @@ $$ 𝑓𝑜𝑛𝑑𝑎 = {𝑓𝑐𝑙𝑜𝑐k \over {(𝑇𝐼𝑀3−>𝑃�
 
 Isolando TIM3->PSC, temos:
 
-$$ 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = {𝑓𝑐𝑙𝑜𝑐k \over {𝑓𝑜𝑛𝑑𝑎 x (𝑇𝐼𝑀3−>𝐴𝑅𝑅 + 1)}} - 1 $$
+$$ 𝑇𝐼𝑀3 −> 𝑃𝑆𝐶 = {𝑓𝑐𝑙𝑜𝑐k \over {𝑓𝑜𝑛𝑑𝑎 * (𝑇𝐼𝑀3−>𝐴𝑅𝑅 + 1)}} - 1 $$
 
 $$ 𝑇𝐼𝑀3 −> 𝑃SC = {72000000Hz \over {𝑓𝑜𝑛𝑑𝑎 x 46}} - 1 $$
 
