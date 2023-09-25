@@ -208,3 +208,15 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
   </tr>
  </tbody>
 </table>
+
+### Definições
+No início do projeto, incluímos a biblioteca “stm32f10x.h” devido ao microcontrolador utilizado ser o STM32F103C8. Também definimos os pinos utilizados para os comandos específicos do LCD, a fim de facilitar o processo do uso do componente ao longo do código e algumas variáveis responsáveis e importantes para a lógica de nossa solução.
+
+```bash
+/*------------------------------------LIBRARIES------------------------------------*/
+# include "stm32f10x.h"
+
+ /*-------------------------------LCD PIN DEFINITIONS-------------------------------*/
+# define LCD_RS 15
+# define LCD_EN 12
+```
