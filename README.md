@@ -9,11 +9,11 @@ Na placa também há um LCD que irá mostrar qual oitava musical estará sendo u
 
 Para a construção de nosso código, utilizamos os seguintes componentes referenciados novamente na seção de demonstração:
 
-<img src="https://uploaddeimagens.com.br/images/004/617/792/full/teclado01.png?1695600447" width=60% height=60%>
+<img src="https://uploaddeimagens.com.br/images/004/617/792/full/teclado01.png?1695600447" width=40% height=40%>
 
 Em relação à pinagem utilizada, consideremos a figura, retirada do apêndice dos laboratórios de ELTD13, ministrados pelo Prof. Gustavo Colletta:
 
-<img src="https://uploaddeimagens.com.br/images/004/617/794/full/teclado02.png?1695600597" width=60% height=60%>
+<img src="https://uploaddeimagens.com.br/images/004/617/794/full/teclado02.png?1695600597" width=30% height=30%>
 
 ● `SW1: PB12`, `SW2: PB13`, `SW3: PB14`, `POT: PB1`, `Buzzer: PB0`, `LCD4: PA8`, `LCD5: PA6`, `LCD6: PA5`, `LCD7: PA11`, `LCDEN: PA12`, `LCDRS: PA15`, `SW5: PB5`, `SW6: PB4`, `SW7: PB3`, `SW8: PA3`, `SW9: PA4`, `SW10: PB8`, `SW11: PB9`, `SW12: PB11`, `SW13: PB10`, `SW14: PA7`, `SW15: PC15`, `SW16: PC14`, `SW17: PC13`
 
