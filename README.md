@@ -131,10 +131,10 @@ Para a construção do código, utilizamos o ambiente Keil uVision. A seguir ser
   <tr>
       <td colspan="1" rowspan="3">Controle de ciclos
       </td>
-      <td colspan="3" rowspan="1"> 
+      <td> 
         void cycle_50(void)
       </td>
-      <td> 
+      <td rowspan="1"> 
         Essas funções atualizam o LCD de acordo com a informação da porcentagem do duty cicle da função void check_cycle e envia ao registrador TIM3 o delay correspondente ao ciclo (void)
       </td>
   </tr>
