@@ -24,47 +24,61 @@ Para a checagem dos registradores e bits ao decorrer do projeto, foi utilizado o
 Para a construção do código, utilizamos o ambiente Keil uVision. A seguir será apresentada cada função utilizada e sua lógica detalhada a seguir.
 
 <table>
-    <thead>
-        <tr>
-            <th>Layer 1</th>
-            <th>Layer 2</th>
-            <th>Layer 3</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td rowspan=4>L1 Name</td>
-            <td rowspan=2>L2 Name A</td>
-            <td>L3 Name A</td>
-        </tr>
-        <tr>
-            <td>L3 Name B</td>
-        </tr>
-        <tr>
-            <td rowspan=2>L2 Name B</td>
-            <td>L3 Name C</td>
-        </tr>
-        <tr>
-            <td>L3 Name D</td>
-        </tr>
-    </tbody>
-</table>
-
-| Parte | Função | Descrição |
-| --- | --- | --- |
-| LCD | ```void lcd_init(void)``` | Inicia o display |
-|       | ```void lcd_command(unsigned char cmd)``` | Envia comandos ao display |
-|       | ```void lcd_data(unsigned char data)``` | Envia dados em ASCII para ser exibido no display |
-|       | ```void lcd_print(char *str)``` | Envia uma string ao display |
-|       | ```void lcd_putValue(unsigned char value)``` | Usado internamente para inserir valores no display |
-| DELAY | ```void delay_us(uint16_t t)``` | Delay em microssegundos |
-|         | ```void delay_ms(uint16_t t) ``` | Delay em milissegundos |
-| Conversão | ```void binary_to_bcd(uint8_t t)``` | Converte de binário para bcd |
-|             | ```void bcd_to_ascii(void)``` | Converte de bcd para ascii |
-| Manipulação de bit | ```char bitTst(char port, char bit)``` | Testa um bit de determinada PORT através da operação AND e deslocamento de bits |
-| Controle de ciclos | ```void cycle_50(void)``` | Essas funções atualizam o LCD de acordo com a informação da porcentagem do duty cicle da função void check_cycle e envia ao registrador TIM3 o delay correspondente ao ciclo (void)
-|                      | ```void cycle_25(void)``` |
-|                      | ```void cycle_75(void)``` | |
-| Funções de checagem | `````` |
-| Buzzer | `````` |
-| Principal | `````` |
+  <thead>
+    <tr>
+      <th> Parte
+      </th>
+      <th> 
+        <strong> Função
+        </strong>
+      </th>
+      <th> 
+        <strong> Descrição
+        </strong>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="1" rowspan="5">LCD
+      </td>
+      <td>
+        `void lcd_init(void)`
+      </td>
+      <td>
+        Inicia o display
+      </td>
+    </tr>
+    <tr>
+      <td>
+          `void lcd_command(unsigned char cmd)`
+      </td>
+      <td>
+          Envia comandos ao display
+      </td>
+    </tr>
+    <tr>
+      <td>
+          `void lcd_data(unsigned char data)`
+      </td>
+      <td>
+          Envia dados em ASCII para ser exibido no display
+      </td>
+    </tr>
+    <tr>
+      <td>
+          `void lcd_print(char *str)`
+      </td>
+      <td>
+          Envia uma string ao display
+      </td>
+    </tr>
+    </tr>
+      <td>
+          `void lcd_putValue(unsigned char value)`
+      </td>
+      <td>
+         Usado internamente para inserir valores no display
+      </td>
+    </tr>
+    </tr>
